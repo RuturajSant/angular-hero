@@ -8,6 +8,7 @@
     <th>Check Out</th>
     <th>Room Number</th>
     <th>Amenities</th>
+    <th>Select</th>
   </tr>
   <tr
     [ngClass]="e ? 'even' : 'odd'"
@@ -20,5 +21,10 @@
     <td>{{ room.checkOutTime | date : "dd/MM/yyyy" }}</td>
     <td>{{ room.roomNumber }}</td>
     <td>{{ room.amenities }}</td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="selectRoom(room)">
+        Select Room >
+      </button>
+    </td>
   </tr>
 </table>

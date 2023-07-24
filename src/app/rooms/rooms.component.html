@@ -14,7 +14,12 @@
 <div [ngStyle]="room.availableRooms ? { color: 'green' } : { color: 'red' }">
   Available rooms: {{ room.availableRooms ?? "No available rooms" }}
 </div>
-
+<div *ngIf="selectedRoom">Selected room: {{ selectedRoom | json }}</div>
 <div *ngIf="room.availableRooms">
-  <app-rooms-list [rooms]="roomList" />
+  <app-rooms-list
+    [rooms]="roomList"
+    (selectedRoom)="selectRoom($event)"
+    [title]="title"
+  />
 </div>
+<button (click)="addRoom()">Add room</button>
