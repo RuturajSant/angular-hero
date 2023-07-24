@@ -1,0 +1,39 @@
+<h1>Welcome to {{ hotelName }}</h1>
+<!-- Data interpolation -->
+<div [hidden]="hideRooms">
+  Number of rooms:
+  <span [innerText]="numberofRooms"></span>
+</div>
+<!-- property binding -->
+
+<button (click)="toggle()">
+  <!-- event binding -->
+  {{ hideRooms ? "Show Rooms" : "Hide Rooms" }}
+</button>
+
+<div>Available rooms: {{ room.availableRooms ?? "No available rooms" }}</div>
+
+<div *ngIf="room.availableRooms">
+  <table>
+    <tr>
+      <th>Index</th>
+      <th>Room Type</th>
+      <th>Price</th>
+      <th>Photos</th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Room Number</th>
+      <th>Amenities</th>
+    </tr>
+    <tr *ngFor="let room of roomList; let i = index">
+      <td>{{ i }}</td>
+      <td>{{ room.roomType }}</td>
+      <td>{{ room.price }}</td>
+      <td>{{ room.photos }}</td>
+      <td>{{ room.checkInTime.toDateString() }}</td>
+      <td>{{ room.checkOutTime.toDateString() }}</td>
+      <td>{{ room.roomNumber }}</td>
+      <td>{{ room.amenities }}</td>
+    </tr>
+  </table>
+</div>
