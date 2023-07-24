@@ -11,29 +11,10 @@
   {{ hideRooms ? "Show Rooms" : "Hide Rooms" }}
 </button>
 
-<div>Available rooms: {{ room.availableRooms ?? "No available rooms" }}</div>
+<div [ngStyle]="room.availableRooms ? { color: 'green' } : { color: 'red' }">
+  Available rooms: {{ room.availableRooms ?? "No available rooms" }}
+</div>
 
 <div *ngIf="room.availableRooms">
-  <table>
-    <tr>
-      <th>Index</th>
-      <th>Room Type</th>
-      <th>Price</th>
-      <th>Photos</th>
-      <th>Check In</th>
-      <th>Check Out</th>
-      <th>Room Number</th>
-      <th>Amenities</th>
-    </tr>
-    <tr *ngFor="let room of roomList; let i = index">
-      <td>{{ i }}</td>
-      <td>{{ room.roomType }}</td>
-      <td>{{ room.price }}</td>
-      <td>{{ room.photos }}</td>
-      <td>{{ room.checkInTime.toDateString() }}</td>
-      <td>{{ room.checkOutTime.toDateString() }}</td>
-      <td>{{ room.roomNumber }}</td>
-      <td>{{ room.amenities }}</td>
-    </tr>
-  </table>
+  <app-rooms-list [rooms]="roomList" />
 </div>

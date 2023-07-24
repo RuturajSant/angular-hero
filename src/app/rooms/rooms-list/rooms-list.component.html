@@ -1,0 +1,24 @@
+<h2>Rooms List</h2>
+<table>
+  <tr>
+    <th>Index</th>
+    <th>Room Type</th>
+    <th>Price</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+    <th>Room Number</th>
+    <th>Amenities</th>
+  </tr>
+  <tr
+    [ngClass]="e ? 'even' : 'odd'"
+    *ngFor="let room of rooms; let i = index; let e = even"
+  >
+    <td>{{ i }}</td>
+    <td>{{ room.roomType }}</td>
+    <td>{{ room.price | currency : "INR" }}</td>
+    <td>{{ room.checkInTime | date : "dd/MM/yyyy" }}</td>
+    <td>{{ room.checkOutTime | date : "dd/MM/yyyy" }}</td>
+    <td>{{ room.roomNumber }}</td>
+    <td>{{ room.amenities }}</td>
+  </tr>
+</table>
